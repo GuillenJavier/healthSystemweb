@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Citas del Doctor</title>
+</head>
+<body>
+    <h1>Citas de {{ doctor.nombre }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID de Cita</th>
+                <th>ID de Usuario</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cita in citas %}
+            <tr>
+                <td>{{ cita.id }}</td>
+                <td>{{ cita.usuario_id }}</td>
+                <td>{{ cita.fecha }}</td>
+                <td>{{ cita.estado }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">No hay citas agendadas.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('dashboard_doctor') }}">Volver al Dashboard</a>
+</body>
+</html>

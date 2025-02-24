@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citas del Paciente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="appointments-container">
+        <h1>Citas del Paciente</h1>
+        
+        <table class="appointments-table">
+            <thead>
+                <tr>
+                    <th>Médico</th>
+                    <th>Fecha</th>
+                    <th>Motivo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cita in citas %}
+                <tr>
+                    <td>{{ cita.medico.nombre }} {{ cita.medico.apellido }}</td>
+                    <td>{{ cita.fecha_hora }}</td>
+                    <td>{{ cita.motivo }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="3">No tienes citas programadas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <div class="back-button">
+            <a href="{{ url_for('dashboard_user') }}" class="btn-primary">Volver al perfil</a>
+        </div>
+    </div>
+</body>
+</html>

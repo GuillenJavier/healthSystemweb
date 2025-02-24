@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Información Básica</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+    <div class="bg-white p-6 rounded shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-4 text-center">Editar Información Básica</h2>
+        
+        {% if message %}
+        <p class="text-green-500 text-sm mb-4">{{ message }}</p>
+        {% endif %}
+        
+        {% if error %}
+        <p class="text-red-500 text-sm mb-4">{{ error }}</p>
+        {% endif %}
+        
+        <form action="/edit-profile" method="POST" class="space-y-4">
+            <!-- Nombre -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Nombre</label>
+                <input 
+                    type="text" 
+                    name="nombre" 
+                    value="{{ user_data['nombre'] }}" 
+                    class="w-full px-3 py-2 border rounded-md" 
+                    required
+                >
+            </div>
+            
+            <!-- Apellidos -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Apellidos</label>
+                <input 
+                    type="text" 
+                    name="apellidos" 
+                    value="{{ user_data['apellidos'] }}" 
+                    class="w-full px-3 py-2 border rounded-md" 
+                    required
+                >
+            </div>
+            
+            <!-- Correo -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Correo</label>
+                <input 
+                    type="email" 
+                    name="email" 
+                    value="{{ user_data['email'] }}" 
+                    class="w-full px-3 py-2 border rounded-md" 
+                    required
+                >
+            </div>
+            
+            <!-- Contraseña -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Nueva Contraseña</label>
+                <input 
+                    type="password" 
+                    name="password" 
+                    class="w-full px-3 py-2 border rounded-md"
+                >
+            </div>
+            
+            <div class="flex justify-between">
+                <button 
+                    type="submit" 
+                    class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                >
+                    Guardar Cambios
+                </button>
+                <a 
+                    href="/profile" 
+                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hove

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Cita</title>
+</head>
+<body>
+    <h2>Modificar Cita</h2>
+    <form method="POST">
+        <label for="cita_id">Selecciona la cita a modificar:</label>
+        <select name="cita_id" id="cita_id" required>
+            <option value="">Seleccione una cita</option>  <!-- Opción por defecto -->
+            {% for cita in citas %}
+            <option value="{{ cita.id }}">{{ cita.fecha_hora }} - {{ cita.motivo }}</option>
+            {% endfor %}
+        </select>
+        <label for="nueva_fecha">Nueva Fecha y Hora:</label>
+        <input type="datetime-local" name="nueva_fecha" id="nueva_fecha" required>
+        <button type="submit">Modificar Cita</button>
+    </form>
+    <a href="{{ url_for('my_appointments') }}">Volver a mis citas</a>
+</body>
+</html>

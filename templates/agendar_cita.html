@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Cita</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="appointment-container">
+        <h2>Agendar Cita</h2>
+
+        <form action="{{ url_for('agendar_cita') }}" method="POST" class="appointment-form">
+            <div class="form-group">
+                <label for="tipo_cita">Tipo de Cita</label>
+                <select name="tipo_cita" id="tipo_cita" required>
+                    <option value="general" class="option-general">General</option>
+                    <option value="especialidad" class="option-especialidad">Especialidad</option>
+                    <option value="seguimiento" class="option-seguimiento">Seguimiento</option>
+                    <option value="emergencia" class="option-emergencia">Emergencia</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="medico_id">Personal Médico</label>
+                <select name="medico_id" id="medico_id" required>
+                    {% for medico in medicos %}
+                        <option value="{{ medico.id }}" style="color: {{ medico.color }}">{{ medico.nombre }} {{ medico.apellido }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha">Fecha y Hora</label>
+                <input type="datetime-local" name="fecha" id="fecha" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nota_medica">Nota Médica (Opcional)</label>
+                <textarea name="nota_medica" id="nota_medica" rows="4" placeholder="Escribe alguna nota sobre la cita o el motivo"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="detalles_cita">Detalles de la Cita (Opcional)</label>
+                <textarea name="detalles_cita" id="detalles_cita" rows="4" placeholder="Detalles adicionales de la cita"></textarea>
+            </div>
+
+            <div class="form-group checkbox">
+                <label for="recordatorio">
+                    <input type="checkbox" name="recordatorio" id="recordatorio"> Recibir Recordatorios
+                </label>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" class="btn-primary">Guardar Cita</button>
+                <button type="button" class="btn-secondary" onclick="window.location.href='{% if current_user.is_doctor %}{{ url_for('doctor_profile_edit') }}{% else %}{{ url_for('dashboard_user') }}{% endif %}'">Cancelar</button>
+            </div>
+        </form>
+
+        <div class="help-section">
+            <h3>Ayuda y Soporte</h3>
+            <p>Si tienes problemas para agendar tu cita, contacta con el soporte técnico.</p>
+            <a href="mailto:soporte@healthsystem.com" class="btn-link">Contactar Soporte</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Paciente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="profile-container">
+        <h2>Bienvenido, {{ current_user.nombre }}</h2>
+        
+        <div class="action-buttons">
+            <a href="{{ url_for('agendar_cita') }}" class="btn-primary">Agendar Cita</a>
+            <a href="{{ url_for('my_appointments') }}" class="btn-secondary">Ver Citas</a>
+            <a href="{{ url_for('cancelar_cita') }}" class="btn-warning">Cancelar Cita</a>
+            <a href="{{ url_for('logout') }}" class="btn-danger">Cerrar Sesión</a>
+        </div>
+    </div>
+</body>
+</html>

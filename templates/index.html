@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Asegúrate de que el enlace al archivo CSS esté correctamente configurado -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+<div class="welcome-container">
+    <div class="welcome-header text-center">
+        <h1 class="welcome-title">Bienvenido a HealthSystem </h1>
+        <p class="welcome-subtitle">Gestiona tus citas médicas de manera fácil y rápida</p>
+    </div>
+    
+    {% if not current_user.is_authenticated %}
+    <div class="btn-group">
+        <a href="{{ url_for('login') }}" class="btn-primary">Iniciar Sesión</a>
+        <a href="{{ url_for('registro') }}" class="btn-secondary">Registrarse</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

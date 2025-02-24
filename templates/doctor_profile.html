@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Perfil</title>
+</head>
+<body>
+    <h1>Editar Perfil de {{ medico.nombre }}</h1>
+    <form action="{{ url_for('edit_medico_profile') }}" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" value="{{ medico.nombre }}" required>
+        
+        <label for="especialidad">Especialidad:</label>
+        <input type="text" name="especialidad" value="{{ medico.especialidad }}" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="{{ medico.email }}" required>
+        
+        <button type="submit">Actualizar</button>
+    </form>
+    <a href="{{ url_for('medico_dashboard') }}">Volver al Dashboard</a>
+</body>
+</html>

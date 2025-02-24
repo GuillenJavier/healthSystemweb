@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Médico</title>
+</head>
+<body>
+    <h2>Registro Médico</h2>
+    <form action="{{ url_for('new_medical_record') }}" method="POST" enctype="multipart/form-data">
+        
+        <!-- Sección: Datos Personales -->
+        <h3>Datos Personales</h3>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required><br>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" required><br>
+
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required><br><br>
+
+        <!-- Sección: Datos Profesionales -->
+        <h3>Datos Profesionales</h3>
+        <label for="especialidad">Especialidad:</label>
+        <input type="text" id="especialidad" name="especialidad" required><br>
+
+        <label for="licencia">Número de Licencia:</label>
+        <input type="text" id="licencia" name="licencia" required><br><br>
+
+        <!-- Sección: Cargar Documentos -->
+        <h3>Cargar Documentos</h3>
+        <label for="documento">Cargar documento (certificado, licencia, etc.):</label>
+        <input type="file" id="documento" name="documento" required><br><br>
+
+        <button type="submit">Registrar</button>
+    </form>
+
+    <a href="{{ url_for('profile') }}">Volver al perfil</a>
+</body>
+</html>

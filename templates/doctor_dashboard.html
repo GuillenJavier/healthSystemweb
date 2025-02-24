@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Médico</title>
+</head>
+<body>
+    <h2>Bienvenido, Dr. {{ current_user.nombre }}</h2>  <!-- Cambiado a current_user.nombre -->
+    <h3>Citas Pendientes</h3>
+    <ul>
+        {% for cita in citas_pendientes %}
+        <li>
+            Paciente: {{ cita.paciente.nombre }} <br>  <!-- Asegúrate de que 'paciente' tenga un atributo 'nombre' -->
+            Fecha: {{ cita.fecha_hora }} <br>  <!-- Cambiado a fecha_hora -->
+            Motivo: {{ cita.motivo }}
+        </li>
+        {% else %}
+        <p>No hay citas pendientes</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>
